@@ -1,0 +1,17 @@
+name: Run tested app
+author: sv
+description: Run django app to test it with Playwright tests
+runs:
+  using: "composite"
+  steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: svmikurov/github-actions
+          path: github-actions
+      - name: Set environment variables
+        working-directory: app-dj
+        run: mv .env.example .env
+        shell: bash
+      - name: Run Docker
+        run: make up
+        shell: bash

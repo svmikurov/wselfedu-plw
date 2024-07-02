@@ -1,0 +1,13 @@
+name: Playwright test app-dj
+run-name: Playwright test app-dj
+on: push
+
+jobs:
+  Playwright-test-app-dj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tested app
+        uses: ./.github/actions/tested-app
+      - name: Run tests
+        run: make test
