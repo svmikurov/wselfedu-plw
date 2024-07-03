@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "plw-docker"
+version = "0.1.0"
+description = ""
+authors = ["Sergei Mikurov <454004@mail.ru>"]
+readme = "README.md"
+packages = [{include = "plw_docker"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
