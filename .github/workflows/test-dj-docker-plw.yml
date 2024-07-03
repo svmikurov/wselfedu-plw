@@ -7,31 +7,34 @@ on:
 jobs:
   run-app-dj:
     runs-on: ubuntu-latest
-
     steps:
+
+      # Checkout app-dj
       - name: Checkout app-dj
         uses: actions/checkout@main
         with:
           repository: svmikurov/dj-docker-plw
           token: ${{ secrets.PAT }}
-        env:
-          HOST: localhost:8000
+          path: app
+#      - name: Docker up
+#        run: make up
+#      - name: Set env
+#        run: mv app-dj/.env.example app-dj/.env
+#      - name: Run tests
+#        run: make test
 
-      - name: Docker up
-        run: make up
+      - name: Ls 1
+        run: ls -a
 
-      - name: Set env
-        run: mv app-dj/.env.example app-dj/.env
-
-      - name: Run tests
-        run: make test
-
-  test-app-dj:
-    runs-on: ubuntu-latest
-    steps:
+      # Checkout test
       - name: Checkout test
         uses: actions/checkout@v3
-      - name: Run tests
-        run: docker run -i --rm --network=host plw-test
-    needs: [run-app-dj]
+        with:
 
+#      - name: Set env
+#        run: mv app-dj/.env.example app-dj/.env
+#      - name: Run tests
+#        run: docker run -i --rm --network=host plw-test
+
+      - name: Ls 3
+        run: ls -a
