@@ -5,8 +5,33 @@ on:
     types: [run-plw-tests]
 
 jobs:
-  test-with-playwright:
+  run-app-dj:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Hello, Playwright!"
+      - name: Checkout app-dj
+        uses: actions/checkout@main
+        with:
+          repository: svmikurov/dj-docker-plw
+          token: ${{ secrets.PAT }}
+        env:
+          HOST: localhost:8000
+
+      - name: Docker up
+        run: make up
+
+      - name: Set env
+        run: mv app-dj/.env.example app-dj/.env
+
+      - name: Run tests
+        run: make test
+
+  test-app-dj:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test
+        uses: actions/checkout@v3
+      - name: Run tests
+        run: docker run -i --rm --network=host plw-test
+    needs: [run-app-dj]
+
