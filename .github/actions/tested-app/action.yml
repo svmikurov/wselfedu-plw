@@ -8,6 +8,7 @@ runs:
         with:
           repository: svmikurov/github-actions
           path: github-actions
+          ref: main
       - name: Set environment variables
         working-directory: app-dj
         run: mv .env.example .env

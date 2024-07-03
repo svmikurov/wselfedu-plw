@@ -1,0 +1,12 @@
+name: Test with Playwright
+
+on:
+  repository_dispatch:
+    types: [run-plw-tests]
+
+jobs:
+  test-with-playwright:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: echo "Hello, Playwright!"
