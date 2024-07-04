@@ -1,0 +1,7 @@
+.gitignore
+poetry.lock
+pyproject.toml
+*.md
+
+.venv/
+.github/

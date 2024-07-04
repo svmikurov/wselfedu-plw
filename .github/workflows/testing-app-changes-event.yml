@@ -4,7 +4,8 @@ run-name: Test on testing app changes event
 on:
   push:
     paths-ignore: [
-      "*.md", ".gitignore",
+      '*.md', '.gitignore', '.dockerignore', 'sphinx.yml',
+      'web-app-changes-event.yml', 'Makefile', '*.lock', '*.toml'
     ]
 
 jobs:
