@@ -26,8 +26,9 @@ jobs:
 
       - name: Start web app
         run: |
-          mv app-django/.env.example    app-django/.env
-          mv app-django/.env.db.example app-django/.env.db
+          ls -a
+          mv app-wse/.env.example           app-wse/.env
+          mv app-wse/.env.postgres.example  app-wse/.env.postgres
           docker compose up -d --build
 
       - name: Start testing app
