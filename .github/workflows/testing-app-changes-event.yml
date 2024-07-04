@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: svmikurov/wselfedu
+          ref: development
           path: ./
 
       - name: Checkout testing app
