@@ -15,7 +15,7 @@ jobs:
       - name: Checkout third party repo web app
         uses: actions/checkout@v4
         with:
-          repository: svmikurov/docker-nginx-django
+          repository: svmikurov/wselfedu
           path: ./
 
       - name: Checkout testing app
