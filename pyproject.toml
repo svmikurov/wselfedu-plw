@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "plw-docker"
+name = "wselfedu-plw"
 version = "0.1.0"
 description = ""
 authors = ["Sergei Mikurov <454004@mail.ru>"]
@@ -8,6 +8,15 @@ packages = [{include = "plw_docker"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+python-dotenv = "^1.0.1"
+flake8 = "^7.1.0"
+flake8-docstrings = "^1.7.0"
+pytest = "^8.2.2"
+pytest-playwright = "^0.5.1"
+playwright = "^1.45.0"
+sphinx = "^7.3.7"
+sphinx-rtd-theme = "^2.0.0"
+myst-parser = "^3.0.1"
 
 
 [build-system]
