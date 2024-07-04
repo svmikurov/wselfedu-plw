@@ -9,7 +9,6 @@ load_dotenv()
 
 HOST = os.getenv('HOST')
 
-
 @pytest.fixture(autouse=True)
 def run_around_tests(page: Page) -> Generator[None, None, None]:
     """New browser page pytest-playwright fixture for a test."""
