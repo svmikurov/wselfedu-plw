@@ -3,6 +3,8 @@ run-name: Test on testing app changes event
 
 on:
   push:
+    branches:
+      - main
     paths-ignore: [
       '*.md', '.gitignore', '.dockerignore', '*/sphinx.yml',
       '*/web-app-changes-event.yml', 'Makefile', '*.lock', '*.toml'
