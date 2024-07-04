@@ -22,4 +22,4 @@ def test_page_status(page: Page) -> None:
 
 
 def test_page_title(page: Page) -> None:
-    expect(page).to_have_title('Hello, Word!')
+    expect(page).to_have_title('Домашняя страница')
