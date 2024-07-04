@@ -1,7 +1,11 @@
 name: Testing app changes event
 run-name: Test on testing app changes event
 
-on: push
+on:
+  push:
+    paths-ignore: [
+      "*.md", ".gitignore",
+    ]
 
 jobs:
   testing-app-changes-event:
