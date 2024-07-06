@@ -3,6 +3,8 @@ run-name: 'Sphinx: Render docs'
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "docs/**"
       - ".github/workflows/sphinx.yml"
