@@ -9,6 +9,7 @@ on:
       '**.md', '.gitignore', '.dockerignore', '**/sphinx.yml', 'docs/**',
       '**/web-app-changes-event.yml', 'Makefile', '**.lock', '**.toml'
     ]
+  workflow_dispatch:
 
 jobs:
   testing-app-changes-event:
