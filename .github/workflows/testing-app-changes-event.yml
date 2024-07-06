@@ -29,12 +29,13 @@ jobs:
           cp app-wse/.env.postgres.example  app-wse/.env.postgres
           docker compose up -d
           sleep 5s
+          make migrate
+          make collectstatic
 
       - name: Load fixture
-        run: |
-          make migrate
-          docker compose exec app-wse python manage.py loaddata tests/fixtures/wse-db-fixture-users.json
-          make collectstatic
+        run: >
+          docker compose exec app-wse python manage.py
+          loaddata tests/fixtures/wse-db-fixture-users.json
 
       - name: Checkout testing app
         uses: actions/checkout@v4
