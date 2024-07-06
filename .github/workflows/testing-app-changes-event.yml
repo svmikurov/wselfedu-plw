@@ -31,10 +31,9 @@ jobs:
           sleep 5s
 
       - name: Load fixture
-        run: >
-          make migrate |
-          docker compose exec app-wse python manage.py 
-          loaddata tests/fixtures/wse-db-fixture-users.json |
+        run: |
+          make migrate
+          docker compose exec app-wse python manage.py loaddata tests/fixtures/wse-db-fixture-users.json
           make collectstatic
 
       - name: Checkout testing app
