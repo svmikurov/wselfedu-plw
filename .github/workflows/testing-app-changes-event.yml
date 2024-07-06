@@ -23,24 +23,22 @@ jobs:
           ref: development
           path: ./
 
+      - name: Start web app
+        run: |
+          cp app-wse/.env.example           app-wse/.env
+          cp app-wse/.env.postgres.example  app-wse/.env.postgres
+          docker compose up -d
+
+      - name: Load fixture
+        run: |
+          make migrate
+          docker compose exec app-wse python manage.py loaddata tests/fixtures/wse-db-fixture-users.json
+          make collectstatic
+
       - name: Checkout testing app
         uses: actions/checkout@v4
         with:
           path: ./tests
-
-      - name: Start web app
-        run: |
-          ls -a
-          mv app-wse/.env.example           app-wse/.env
-          mv app-wse/.env.postgres.example  app-wse/.env.postgres
-          docker compose up -d --build
-
-      - name: Load fixture
-        run: >
-          make migrate && \
-          make collectstatic && \
-          docker compose exec app-wse python manage.py 
-          loaddata tests/fixtures/wse-db-fixture-users.json
 
       - name: Start testing app
         working-directory: tests/
