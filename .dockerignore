@@ -5,3 +5,4 @@ pyproject.toml
 
 .venv/
 .github/
+docs/
