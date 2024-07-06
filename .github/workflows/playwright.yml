@@ -1,5 +1,5 @@
-name: Testing app changes event
-run-name: Test on testing app changes event
+name: Playwright test
+run-name: Playwright test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - main
     paths-ignore: [
       '**.md', '.gitignore', '.dockerignore', '**/sphinx.yml', 'docs/**',
-      '**/web-app-changes-event.yml', 'Makefile', '**.lock', '**.toml'
+      'Makefile', '**.lock', '**.toml'
     ]
   workflow_dispatch:
 
