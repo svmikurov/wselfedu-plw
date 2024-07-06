@@ -3,8 +3,9 @@ run-name: 'Sphinx: Render docs'
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - "docs/**"
+      - ".github/workflows/sphinx.yml"
 
 jobs:
   build-sphinx-docs:
@@ -14,27 +15,46 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/chrckout@v4
+        uses: actions/checkout@v4
+
+      - name: ls
+        run: |
+          ls -a
+          pwd
 
       - name: Set up Paython
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install Sphinx
+      - name: Install Playwright
         run: |
-          python -m pip install --upgrade pip
-          pip install sphinx sphinx_rtd_theme myst_parser
+          pip install playwright
+          pip install pytest==8.2.2
+          pip install pytest-playwright==0.5.0
+          playwright install
+          playwright install-deps
+
+      - name: Install dependencies
+        run: |
           pip install -r requirements.txt
 
       - name: Build HTML
+        working-directory: ./docs/
         run: |
-          sphinx-build docs/source docs/build/html
+          make html
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          retention-days: 30
+          name: html-docs
+          path: docs/build/html/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: app-wse/docs/build/html/
+          publish_dir: docs/build/html/
           force_orphan: true
           allow_empty_commit: true

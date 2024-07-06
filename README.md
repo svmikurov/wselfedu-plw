@@ -1,6 +1,8 @@
 [![Testing app changes event](https://github.com/svmikurov/wselfedu-plw/actions/workflows/testing-app-changes-event.yml/badge.svg)](https://github.com/svmikurov/wselfedu-plw/actions/workflows/testing-app-changes-event.yml)
 
-# Playwright tests specific Django [web app](https://github.com/svmikurov/docker-nginx-django)
+# Playwright tests [wselfedu](https://github.com/svmikurov/wselfedu) web app  
+
+### [Documentation](https://svmikurov.github.io/wselfedu-plw/)
 
 ## Steck:
   * Playwright

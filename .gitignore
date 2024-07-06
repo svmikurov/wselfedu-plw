@@ -3,6 +3,4 @@
 .venv/
 __pycache__/
 docs/build/
-docs/source/_sources/
-docs/source/_static/
 docs/source/generated/
