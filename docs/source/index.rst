@@ -14,6 +14,7 @@ Welcome to wselfedu-plw's documentation!
    api
    pages
    tests
+   changelogs
 
 
 Indices and tables
