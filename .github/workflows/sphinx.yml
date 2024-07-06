@@ -3,8 +3,8 @@ run-name: 'Sphinx: Render docs'
 
 on:
   push:
-    paths:
-      - docs/
+    branches:
+      - main
 
 jobs:
   build-sphinx-docs:
