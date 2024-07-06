@@ -5,10 +5,8 @@ RUN pip install --upgrade pip && \
     pip install pytest-playwright==0.5.0 && \
     playwright install && \
     playwright install-deps
-COPY requirements.txt   /temp/requirements.txt
-RUN pip install -r      /temp/requirements.txt
-WORKDIR                 /src
-COPY pytest.ini         /src/pytest.ini
-COPY .env               /src/.env
-COPY /src               /src
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+WORKDIR /wselfedu-plw
+COPY . .
 CMD ["pytest"]

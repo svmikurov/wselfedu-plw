@@ -2,13 +2,11 @@
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-import os
+import pathlib
 import sys
 from os.path import basename, dirname, realpath
 
-# src_path = pathlib.Path(__file__).parents[2].resolve().as_posix()
-src_path = os.path.abspath('../../src')
-sys.path.insert(0, src_path)
+sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
