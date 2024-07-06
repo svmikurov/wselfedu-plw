@@ -6,11 +6,9 @@ on:
     branches:
       - main
     paths-ignore: [
-      '*.md', '.gitignore', '.dockerignore', '*/sphinx.yml', 'docs/'
-      '*/web-app-changes-event.yml', 'Makefile', '*.lock', '*.toml'
+      '**.md', '.gitignore', '.dockerignore', '**/sphinx.yml', 'docs/**',
+      '**/web-app-changes-event.yml', 'Makefile', '**.lock', '**.toml'
     ]
-#  merge_group:
-#    types:
 
 jobs:
   testing-app-changes-event:
