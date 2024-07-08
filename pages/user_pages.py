@@ -61,8 +61,7 @@ class UserDeletePage(TestingPage):
 
     def navigate(self):
         """Navigate to user account."""
-        account_link_locator = self.page.get_by_test_id("account-link")
-        account_path = account_link_locator.get_attribute('href')
+        account_path = self.account_link_locator.get_attribute('href')
         self.page.goto(self.host + account_path)
 
     def delete_user(self):
