@@ -5,5 +5,7 @@ lint:
 build:
 	docker build -t plw-test .
 
-test:
+run:
 	docker run -it --rm --network=host plw-test
+
+test: build run
