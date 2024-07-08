@@ -45,4 +45,4 @@ def test_login_page(page: Page) -> None:
     test_page.login('wrong_user_name', 'wrong_user_pass')
     test_page.test_title()
     test_page.login(USER_NAME, USER_PASS)
-    assert test_page.title == HomePage.title
+    assert test_page.current_title == HomePage.title
