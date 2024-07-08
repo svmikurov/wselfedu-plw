@@ -24,11 +24,12 @@ USER_PASS = os.getenv('TEST_USER_PASS')
 def test_login_page(page: Page) -> None:
     """Test the login page.
 
-    Tests the transition to the page, the username and password entry
-    fields, and the title of the next page after a successful login.
-
-    The login page is represented by the :ref:`LoginPage` class of page
-    object model.
+    Test:
+        - load login page
+        - login with wrong user data
+        - no redirects if not success login
+        - login
+        - redirect to home page if success login
 
     Parameters
     ----------
