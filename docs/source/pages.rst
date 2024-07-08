@@ -23,10 +23,10 @@ TestingPage
 Page classes
 ============
 
-IndexPage
+HomePage
 ---------
 
-.. autoclass:: pages.index.IndexPage
+.. autoclass:: pages.home.HomePage
 
 .. _LoginPage:
 

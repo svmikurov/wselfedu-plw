@@ -8,7 +8,7 @@ import os
 from dotenv import load_dotenv
 from playwright.sync_api import Page
 
-from pages.index import IndexPage
+from pages.home import HomePage
 from pages.login import LoginPage
 
 load_dotenv()
