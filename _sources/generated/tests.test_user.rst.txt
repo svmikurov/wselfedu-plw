@@ -1,0 +1,40 @@
+tests.test\_user
+================
+
+.. automodule:: tests.test_user
+
+   
+   
+   .. rubric:: Module Attributes
+
+   .. autosummary::
+   
+      USER_NAME
+      USER_PASS
+      TEMP_USER_NAME
+      TEMP_USER_PASS
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      test_delete_user
+      test_login_page
+      test_user_registration_page
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

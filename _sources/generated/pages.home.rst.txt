@@ -1,0 +1,29 @@
+pages.home
+==========
+
+.. automodule:: pages.home
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      HomePage
+   
+   
+
+   
+   
+   
+
+
+

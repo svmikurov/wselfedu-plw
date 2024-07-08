@@ -1,0 +1,31 @@
+pages.user\_pages
+=================
+
+.. automodule:: pages.user_pages
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      LoginPage
+      RegistrationPage
+      UserDeletePage
+   
+   
+
+   
+   
+   
+
+
+

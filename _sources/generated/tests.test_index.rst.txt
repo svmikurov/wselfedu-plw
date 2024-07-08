@@ -1,0 +1,29 @@
+tests.test\_index
+=================
+
+.. automodule:: tests.test_index
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      test_home_page
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+
