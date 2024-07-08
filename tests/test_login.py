@@ -8,6 +8,7 @@ import os
 from dotenv import load_dotenv
 from playwright.sync_api import Page
 
+from pages.index import IndexPage
 from pages.login import LoginPage
 
 load_dotenv()
@@ -34,6 +35,7 @@ def test_login_page(page: Page) -> None:
     page : `Page`
         The Playwright Pytest fixture.
     """
+    home_page = IndexPage(page)
     login_page = LoginPage(page)
     login_page.navigate()
     login_page.test_title()
@@ -43,4 +45,4 @@ def test_login_page(page: Page) -> None:
     login_page.login('wrong_user_name', 'wrong_user_pass')
     login_page.test_title()
     login_page.login(USER_NAME, USER_PASS)
-    login_page.test_title('Домашняя страница')
+    assert page.title == home_page.title
