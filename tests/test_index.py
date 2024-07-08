@@ -1,11 +1,11 @@
 from playwright.sync_api import Page
 
-from pages.index import IndexPage
+from pages.home import HomePage
 
 
-def test_index_page(page: Page):
-    """Test index page."""
-    index_page = IndexPage(page)
-    index_page.navigate()
+def test_home_page(page: Page):
+    """Test home page."""
+    home_page = HomePage(page)
+    home_page.navigate()
 
-    index_page.test_title()
+    home_page.test_title()

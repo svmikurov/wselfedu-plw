@@ -22,8 +22,13 @@ class BasePage:
         """Page url."""
         return self.host + self.path
 
+    @property
+    def current_title(self):
+        """Current page title."""
+        return self.page.title()
+
     def navigate(self) -> None:
-        """Go to page url."""
+        """Navigate to page."""
         self.page.goto(self.url)
 
 
