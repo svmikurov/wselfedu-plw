@@ -35,14 +35,13 @@ def test_login_page(page: Page) -> None:
     page : `Page`
         The Playwright Pytest fixture.
     """
-    home_page = IndexPage(page)
-    login_page = LoginPage(page)
-    login_page.navigate()
-    login_page.test_title()
+    test_page = LoginPage(page)
+    test_page.navigate()
+    test_page.test_title()
 
     # if the login is successful, then user redirects to the home page,
     # does not redirect otherwise
-    login_page.login('wrong_user_name', 'wrong_user_pass')
-    login_page.test_title()
-    login_page.login(USER_NAME, USER_PASS)
-    assert page.title == home_page.title
+    test_page.login('wrong_user_name', 'wrong_user_pass')
+    test_page.test_title()
+    test_page.login(USER_NAME, USER_PASS)
+    assert test_page.title == HomePage.title
