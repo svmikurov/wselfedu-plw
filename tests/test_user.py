@@ -97,6 +97,8 @@ def test_delete_user(page: Page):
     delete_page.page.get_by_placeholder('Имя пользователя').fill(TEMP_USER_NAME)
     delete_page.page.get_by_placeholder('Пароль').fill(TEMP_USER_PASS)
     delete_page.page.get_by_role('button', name='Войти').click()
+    home_page = HomePage(page)
+    assert login_page.current_title == home_page.title
 
     delete_page.navigate()
     delete_page.delete_user()
