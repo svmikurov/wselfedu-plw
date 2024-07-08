@@ -30,7 +30,11 @@ HomePage
 
 .. _LoginPage:
 
-LoginPage
----------
+User pages
+----------
 
-.. autoclass:: pages.login.LoginPage
+.. autoclass:: pages.user_pages.RegistrationPage
+
+.. autoclass:: pages.user_pages.LoginPage
+
+.. autoclass:: pages.user_pages.UserDeletePage
