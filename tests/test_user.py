@@ -8,21 +8,18 @@ from dotenv import load_dotenv
 from playwright.sync_api import Page
 
 from pages.home import HomePage
-from pages import user_pages
+from pages.user import LoginPage, RegistrationPage, UserDeletePage
 
 load_dotenv()
 
+DATABASE_URL = os.getenv('DATABASE_URL')
+"""Connect data for connect to Postres database.
+"""
 USER_NAME = os.getenv('TEST_USER_NAME')
 """Login username.
 """
 USER_PASS = os.getenv('TEST_USER_PASS')
 """User login password.
-"""
-TEMP_USER_NAME = 'temp-user'
-"""User name for create and delete temp user.
-"""
-TEMP_USER_PASS = '1q2s3d4r'
-"""Temp user password.
 """
 
 
@@ -40,8 +37,8 @@ def test_user_registration_page(page: Page) -> None:
     page : `Page`
         The Playwright Pytest fixture.
     """
-    login_page = user_pages.LoginPage(page)
-    reg_page = user_pages.RegistrationPage(page)
+    login_page = LoginPage(page)
+    reg_page = RegistrationPage(page)
 
     reg_page.navigate()
     reg_page.test_title()
@@ -64,7 +61,7 @@ def test_login_page(page: Page) -> None:
         The Playwright Pytest fixture.
     """
     home_page = HomePage(page)
-    login_page = user_pages.LoginPage(page)
+    login_page = LoginPage(page)
 
     login_page.navigate()
     login_page.test_title()
@@ -89,8 +86,8 @@ def test_delete_user(page: Page):
     page : `Page`
         The Playwright Pytest fixture.
     """
-    login_page = user_pages.LoginPage(page)
-    delete_page = user_pages.UserDeletePage(page)
+    login_page = LoginPage(page)
+    delete_page = UserDeletePage(page)
 
     # need user logged in
     delete_page.page.goto(login_page.url)
