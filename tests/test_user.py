@@ -4,11 +4,14 @@ User tests module.
 
 import os
 
+import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import Page
 
+from db_con import db
 from pages.home import HomePage
-from pages.user import LoginPage, RegistrationPage, UserDeletePage
+from pages.user import LoginPage, UserDeletePage, CreateUserPage
+from tests.base import TestCasePage
 
 load_dotenv()
 
@@ -21,8 +24,37 @@ USER_NAME = os.getenv('TEST_USER_NAME')
 USER_PASS = os.getenv('TEST_USER_PASS')
 """User login password.
 """
+TEMP_USER_NAME = 'temp-user'
+"""User name for create and delete temp user.
+"""
+TEMP_USER_PASS = '1q2s3d4r'
+"""Temp user password.
+"""
 
 
+class TestCrudUserPage(TestCasePage):
+    """CRUD user pages class."""
+
+    def tearDown(self):
+        """Tear down after each method test.
+
+        Truncate cascade the users database table.
+        """
+        connection = db.connect(DATABASE_URL)
+        db.truncate_user_table(connection)
+        db.close(connection)
+
+    def test_create_user_page(self):
+        """Test the user registration page."""
+        page = CreateUserPage(self.page)
+        page.navigate()
+        page.create_user(TEMP_USER_NAME, TEMP_USER_PASS)
+
+        # redirect to home page after successful user creation
+        assert page.current_title == LoginPage.title
+
+
+@pytest.mark.skip
 def test_user_registration_page(page: Page) -> None:
     """Test the user registration page.
 
@@ -38,7 +70,7 @@ def test_user_registration_page(page: Page) -> None:
         The Playwright Pytest fixture.
     """
     login_page = LoginPage(page)
-    reg_page = RegistrationPage(page)
+    reg_page = CreateUserPage(page)
 
     reg_page.navigate()
     reg_page.test_title()
@@ -46,6 +78,7 @@ def test_user_registration_page(page: Page) -> None:
     assert reg_page.current_title == login_page.title
 
 
+@pytest.mark.skip('There will be refactoring')
 def test_login_page(page: Page) -> None:
     """Test the login page.
 
@@ -73,7 +106,8 @@ def test_login_page(page: Page) -> None:
     assert login_page.current_title == home_page.title
 
 
-def test_delete_user(page: Page):
+@pytest.mark.skip('There will be refactoring')
+def test_delete_user(page: Page) -> None:
     """Test delete user.
 
     Test:

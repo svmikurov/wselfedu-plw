@@ -4,10 +4,10 @@ User pages module.
 
 from playwright.sync_api import Page
 
-from pages.base_page import TestingPage
+from pages.base import TestingPage
 
 
-class RegistrationPage(TestingPage):
+class CreateUserPage(TestingPage):
     """The user registration page class."""
 
     def __init__(self, page: Page):
@@ -19,25 +19,37 @@ class RegistrationPage(TestingPage):
         self.user_password2_input = page.get_by_placeholder(
             'Подтверждение пароля',
         )
-        self.registration_button = page.get_by_role(
+        self.submit_button = page.get_by_role(
             'button', name='Зарегистрироваться',
         )
 
-    def register(self, name: str, password: str) -> None:
-        """Register user."""
-        self.user_name_input.fill(name)
-        self.user_password1_input.fill(password)
-        self.user_password2_input.fill(password)
-        self.registration_button.click()
+    def create_user(self, user_name: str, user_pass: str) -> None:
+        """Register a new user.
+
+        Fills out the user registration form. Clicks on the submit form
+        button.
+
+        Parameters
+        ----------
+        user_name : `str`
+            Login of the registered user.
+        user_pass : `str`
+            Password of the registered user.
+        """
+        self.user_name_input.fill(user_name)
+        self.user_password1_input.fill(user_pass)
+        self.user_password2_input.fill(user_pass)
+        self.submit_button.click()
 
 
 class LoginPage(TestingPage):
     """The user login page class."""
 
+    title = 'Вход в приложение'
+
     def __init__(self, page: Page) -> None:
         super().__init__(page)
         self.path = '/users/login'
-        self.title = 'Вход в приложение'
         self.user_name_input = page.get_by_placeholder('Имя пользователя')
         self.user_password_input = page.get_by_placeholder('Пароль')
         self.registration_button = page.get_by_role('button', name='Войти')

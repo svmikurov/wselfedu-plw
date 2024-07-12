@@ -17,6 +17,7 @@ playwright = "^1.45.0"
 sphinx = "^7.3.7"
 sphinx-rtd-theme = "^2.0.0"
 myst-parser = "^3.0.1"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]
