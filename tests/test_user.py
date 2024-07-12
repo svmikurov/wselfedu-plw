@@ -7,6 +7,7 @@ import os
 import pytest
 from dotenv import load_dotenv
 from playwright.sync_api import Page
+from psycopg2.extras import NamedTupleCursor
 
 from db_con import db
 from pages.home import HomePage
@@ -52,6 +53,28 @@ class TestCrudUserPage(TestCasePage):
 
         # redirect to home page after successful user creation
         assert page.current_title == LoginPage.title
+
+        # an entry with the username should appear
+        # in the "users_usermodel" table of the database
+        connection = db.connect(DATABASE_URL)
+        has_db_user = self.check_has_db_user(connection, TEMP_USER_NAME)
+        db.close(connection)
+        assert has_db_user is True
+
+    @staticmethod
+    def check_has_db_user(connection, user_namer):
+        """Check if there is a registered user in the database."""
+        with connection.cursor(cursor_factory=NamedTupleCursor) as curs:
+            curs.execute(
+                '''
+                SELECT username
+                FROM users_usermodel
+                WHERE username = %s
+                ''',
+                (user_namer,)
+            )
+            check = curs.fetchone()
+        return True if check else False
 
 
 @pytest.mark.skip
