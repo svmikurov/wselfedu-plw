@@ -10,11 +10,11 @@ Welcome to wselfedu-plw's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   pages/index
+   tests/index
    git
-   api
-   pages
-   tests
    changelogs
+   api
 
 
 Indices and tables
