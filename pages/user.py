@@ -61,7 +61,7 @@ class LoginPage(TestingPage):
         self.registration_button.click()
 
 
-class UserDeletePage(TestingPage):
+class DeleteUserPage(TestingPage):
     """User delete page class."""
 
     def __init__(self, page: Page):
